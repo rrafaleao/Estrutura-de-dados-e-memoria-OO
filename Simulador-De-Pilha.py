@@ -11,15 +11,12 @@ class Pilha:
             print("Item adicionado!")
     
     def pop(self):
-        print("Pop")
+        print("Ultimo item removido")
         return self.item.pop()
     
     def peek(self):
         print(self.item)
         return self.item[-1] if self.item else None
-
-    def is_empty(self):
-        return len(self.item) == 0
 
 def menu():
     max_size = int(input("Digite o tamanho maximo da pilha: "))
@@ -37,10 +34,7 @@ def menu():
 
         if op == '2':
             pilha.pop()
-    
+
         if op == '3':
             pilha.peek()
-
-        if op == '4':
-            pilha.is_empty()
 menu()
