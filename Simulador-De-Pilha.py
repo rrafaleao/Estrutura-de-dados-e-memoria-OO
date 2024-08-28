@@ -5,21 +5,31 @@ class Pilha:
     
     def push(self, item):
         if len(self.item) >= self.max_size:
-            print("Erro, Limite maximo atingido")
+            print("Limite máximo atingido")
         else:
             self.item.append(item)
             print("Item adicionado!")
     
     def pop(self):
-        print("Ultimo item removido")
-        return self.item.pop()
+        if self.is_empty():
+            print("a pilha está vazia!")
+        else:
+            print("Último item removido")
+            return self.item.pop()
     
     def peek(self):
-        print(self.item)
-        return self.item[-1] if self.item else None
+        if self.is_empty():
+            print("pilha está vazia!")
+            return None
+        else:
+            print("Topo da pilha:", self.item[-1])
+            return self.item[-1]
+    
+    def is_empty(self):
+        return len(self.item) == 0
 
 def menu():
-    max_size = int(input("Digite o tamanho maximo da pilha: "))
+    max_size = int(input("Digite o tamanho máximo da pilha: "))
     pilha = Pilha(max_size)
     while True:
         print("----<Simulador de Pilha>-----")
@@ -32,9 +42,13 @@ def menu():
             item = input("Digite o nome do item: ")
             pilha.push(item)
 
-        if op == '2':
+        elif op == '2':
             pilha.pop()
 
-        if op == '3':
+        elif op == '3':
             pilha.peek()
+
+        else:
+            print("Opção inválida")
+
 menu()
